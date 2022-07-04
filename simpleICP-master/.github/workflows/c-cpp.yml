@@ -1,0 +1,42 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout simpleICP
+        uses: actions/checkout@v2
+        with:
+          path: 'simpleICP'
+      - name: Checkout nanoflann
+        uses: actions/checkout@v2
+        with:
+          repository: 'jlblancoc/nanoflann'
+          path: 'nanoflann'
+      - name: Checkout cxxopts
+        uses: actions/checkout@v2
+        with:
+          repository: 'jarro2783/cxxopts'
+          path: 'cxxopts'
+      - name: Copy nanoflann header
+        run: cp nanoflann/include/nanoflann.hpp simpleICP/c++/src
+      - name: Copy cxxopts header
+        run: cp cxxopts/include/cxxopts.hpp simpleICP/c++/src
+      - name: Install eigen
+        run: sudo apt install libeigen3-dev
+      - name: Build
+        run: ./build.sh
+        working-directory: simpleICP/c++
+      - name: Save artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: simpleICP
+          path: simpleICP/c++/build/simpleicp
