@@ -46,7 +46,7 @@ struct POINT3D
 			}
 	void pointToString()
 	{
-		// std::cout << "("<< x << ", "<< y << ", "<< z << ")"<<std::endl;
+		std::cout << "("<< x << ", "<< y << ", "<< z << ")"<<std::endl;
 	};
 };
 
@@ -556,7 +556,7 @@ float GoICP::OuterBnB()
 	{
 		optError += minDis[i]*minDis[i];
 	}
-	// cout << "Error*: " << optError << " (Init)" << endl;
+	cout << "Error*: " << optError << " (Init)" << endl;
 
 	Matrix R_icp = optR;
 	Matrix t_icp = optT;
@@ -569,11 +569,11 @@ float GoICP::OuterBnB()
 		optError = error;
 		optR = R_icp;
 		optT = t_icp;
-		// cout << "Error*: " << error << " (ICP " << (double)(clock()-clockBeginICP)/CLOCKS_PER_SEC << "s)" << endl;
-		// cout << "ICP-ONLY Rotation Matrix:" << endl;
-		// cout << R_icp << endl;
-		// cout << "ICP-ONLY Translation Vector:" << endl;
-		// cout << t_icp << endl;
+		cout << "Error*: " << error << " (ICP " << (double)(clock()-clockBeginICP)/CLOCKS_PER_SEC << "s)" << endl;
+		cout << "ICP-ONLY Rotation Matrix:" << endl;
+		cout << R_icp << endl;
+		cout << "ICP-ONLY Translation Vector:" << endl;
+		cout << t_icp << endl;
 	}
 
 	// Push top-level rotation node into priority queue
@@ -598,7 +598,7 @@ float GoICP::OuterBnB()
 		// Exit if the optError is less than or equal to the lower bound plus a small epsilon
 		if((optError-nodeRotParent.lb) <= SSEThresh)
 		{
-			// cout << "Error*: " << optError << ", LB: " << nodeRotParent.lb << ", epsilon: " << SSEThresh << endl;
+			cout << "Error*: " << optError << ", LB: " << nodeRotParent.lb << ", epsilon: " << SSEThresh << endl;
 			break;
 		}
 
@@ -685,7 +685,7 @@ float GoICP::OuterBnB()
 				optT.val[1][0] = optNodeTrans.y+optNodeTrans.w/2;
 				optT.val[2][0] = optNodeTrans.z+optNodeTrans.w/2;
 
-				// cout << "Error*: " << optError << endl;
+				cout << "Error*: " << optError << endl;
 
 				// Run ICP
 				clockBeginICP = clock();
@@ -700,7 +700,7 @@ float GoICP::OuterBnB()
 					optR = R_icp;
 					optT = t_icp;
 
-					// cout << "Error*: " << error << "(ICP " << (double)(clock() - clockBeginICP)/CLOCKS_PER_SEC << "s)" << endl;
+					cout << "Error*: " << error << "(ICP " << (double)(clock() - clockBeginICP)/CLOCKS_PER_SEC << "s)" << endl;
 				}
 
 				// Discard all rotation nodes with high lower bounds in the queue
@@ -742,11 +742,11 @@ float GoICP::OuterBnB()
 
 float GoICP::Register()
 {
-	//std::cout << "INITIALIZE THE GOICP SYSTEM :: " << std::endl;
+	std::cout << "INITIALIZE THE GOICP SYSTEM :: " << std::endl;
 	Initialize();
-	//std::cout << "FINDING OUTERBNB :: " << std::endl;
+	std::cout << "FINDING OUTERBNB :: " << std::endl;
 	OuterBnB();
-	//std::cout << "CLEARING THE GOICP SYSTEM :: " << std::endl;
+	std::cout << "CLEARING THE GOICP SYSTEM :: " << std::endl;
 	Clear();
 
 	return optError;
