@@ -585,8 +585,8 @@ float GoICP::OuterBnB()
 	{
 		if(queueRot.empty())
 		{
-		  cout << "Rotation Queue Empty" << endl;
-		  cout << "Error*: " << optError << ", LB: " << lb << endl;
+		  // cout << "Rotation Queue Empty" << endl;
+		  // cout << "Error*: " << optError << ", LB: " << lb << endl;
 		  break;
 		}
 
@@ -603,7 +603,7 @@ float GoICP::OuterBnB()
 		}
 
 		if(count>0 && count%300 == 0)
-			printf("LB=%f  L=%d\n",nodeRotParent.lb,nodeRotParent.l);
+			// printf("LB=%f  L=%d\n",nodeRotParent.lb,nodeRotParent.l);
 		count ++;
 
 		// Subdivide rotation cube into octant subcubes and calculate upper and lower bounds for each
