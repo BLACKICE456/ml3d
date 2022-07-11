@@ -1,141 +1,144 @@
-absl-py @ file:///Users/hang/Library/Caches/pypoetry/artifacts/34/33/8b/e8d3e75447fef73dd310932f6d15d71be684c8173373211e6e7a858bcb/absl_py-1.0.0-py3-none-any.whl
-aiohttp @ file:///Users/hang/Library/Caches/pypoetry/artifacts/df/5c/c3/19cc08c05b23aaf8a5cf56b108f3a12fa7c3e760219c22ffb1902104f7/aiohttp-3.8.1-cp310-cp310-macosx_11_0_arm64.whl
-aiosignal @ file:///Users/hang/Library/Caches/pypoetry/artifacts/30/30/0d/903be6c7ed45c2c0427a2a18486bb6ceb0a700c346a94414b6b395e16e/aiosignal-1.2.0-py3-none-any.whl
-appnope @ file:///home/conda/feedstock_root/build_artifacts/appnope_1649077682618/work
-argon2-cffi @ file:///Users/hang/Library/Caches/pypoetry/artifacts/05/8e/79/28f2b292b8981d9a051595a12fe5a6200cc8a4b05e4bc39397fdd64218/argon2_cffi-21.3.0-py3-none-any.whl
-argon2-cffi-bindings @ file:///Users/hang/Library/Caches/pypoetry/artifacts/14/a9/46/6fb4fe0e30ad30374349c9108f5f87ad8efc3bf8517db9a87a92be2fd9/argon2_cffi_bindings-21.2.0-cp38-abi3-macosx_10_9_universal2.whl
+absl-py==1.0.0
+aiohttp==3.8.1
+aiosignal==1.2.0
+appnope==0.1.3
+argon2-cffi==21.3.0
+argon2-cffi-bindings==21.2.0
 asteval==0.9.27
-asttokens @ file:///home/conda/feedstock_root/build_artifacts/asttokens_1618968359944/work
-async-timeout @ file:///Users/hang/Library/Caches/pypoetry/artifacts/5e/15/15/173c5bae6f8d28fa399857d021326b2b05fc2debcbc7bcae7c5bf79891/async_timeout-4.0.2-py3-none-any.whl
-attrs @ file:///Users/hang/Library/Caches/pypoetry/artifacts/c4/ee/75/fcd6c2f4c5a1d60b1bcd97014702ca01b3f032fd927d88780b38708409/attrs-21.4.0-py2.py3-none-any.whl
-backcall @ file:///home/conda/feedstock_root/build_artifacts/backcall_1592338393461/work
-backports.functools-lru-cache @ file:///home/conda/feedstock_root/build_artifacts/backports.functools_lru_cache_1618230623929/work
-beautifulsoup4 @ file:///Users/hang/Library/Caches/pypoetry/artifacts/e0/aa/39/7b168d115afeea9a7de54a24de624233f50f1b5a3f67d2e650da99a476/beautifulsoup4-4.11.1-py3-none-any.whl
-bleach @ file:///Users/hang/Library/Caches/pypoetry/artifacts/47/4a/da/7b00b008de4f03dfccf17e2690ee5df766f1528bfa85f18c453c1c0644/bleach-5.0.0-py3-none-any.whl
-cachetools @ file:///Users/hang/Library/Caches/pypoetry/artifacts/42/43/33/cebd2070b751b27b387747cae04ece936bf727f004c87b08ddad799448/cachetools-5.0.0-py3-none-any.whl
-certifi @ file:///Users/hang/Library/Caches/pypoetry/artifacts/89/06/5b/e4bfdf1b8370bdc0a26198e81afa98f68c01a8b1b515c9108c6ad98d8a/certifi-2021.10.8-py2.py3-none-any.whl
-cffi @ file:///Users/hang/Library/Caches/pypoetry/artifacts/d5/51/4e/93327e84fa337c97e99fe49e7760f4883cdf26f6e97ef23af230525048/cffi-1.15.0-cp310-cp310-macosx_11_0_arm64.whl
-charset-normalizer @ file:///Users/hang/Library/Caches/pypoetry/artifacts/d5/27/31/db4fb74906e3a7f55f720e0079ac1850dd86e30651cdfa5e1f04c53cfa/charset_normalizer-2.0.12-py3-none-any.whl
-cycler @ file:///Users/hang/Library/Caches/pypoetry/artifacts/ba/28/11/cf3c90b4ca621519019fffb7d9019a6a62f7219045ac852aeaa6d70eee/cycler-0.11.0-py3-none-any.whl
-debugpy @ file:///Users/runner/miniforge3/conda-bld/debugpy_1649586398798/work
-decorator @ file:///Users/hang/Library/Caches/pypoetry/artifacts/4d/74/ae/729f2e391364511a7e58483964b85fa068421ac9bf705625f2db80812d/decorator-4.4.2-py2.py3-none-any.whl
-defusedxml @ file:///Users/hang/Library/Caches/pypoetry/artifacts/63/7f/1e/b8b316188f0f0704ef8f0eaaad0d3c82dff4aa2495e4e3467479e4ce66/defusedxml-0.7.1-py2.py3-none-any.whl
-entrypoints @ file:///home/conda/feedstock_root/build_artifacts/entrypoints_1643888246732/work
-executing @ file:///home/conda/feedstock_root/build_artifacts/executing_1646044401614/work
-fastjsonschema @ file:///Users/hang/Library/Caches/pypoetry/artifacts/eb/3e/24/b861168ccb83916e4cd8c07f7d05267e5d681e9d409b1487f5c737b5be/fastjsonschema-2.15.3-py3-none-any.whl
-fonttools @ file:///Users/hang/Library/Caches/pypoetry/artifacts/6a/c9/b0/daaca061f1da576b3ac4975b064d75f39e1ee2cd0cb30be8f27ad82ad2/fonttools-4.33.3-py3-none-any.whl
-freetype-py @ file:///Users/hang/Library/Caches/pypoetry/artifacts/3a/01/a8/fb5d8dd78c04a9f6d5e9626025d7ec495212f3e81c701d8fe55caf7f0b/freetype_py-2.3.0-py3-none-macosx_10_9_universal2.whl
-frozenlist @ file:///Users/hang/Library/Caches/pypoetry/artifacts/42/b7/75/93bb3d0dd2b0ee826dad5d91380ce0f949354eb9988dbbe38355e4b447/frozenlist-1.3.0-cp310-cp310-macosx_11_0_arm64.whl
-fsspec @ file:///Users/hang/Library/Caches/pypoetry/artifacts/4a/2e/e2/4ec7a779722381499483b72288140ca8a3390bdc0891963b88a6c40fc7/fsspec-2022.3.0-py3-none-any.whl
+asttokens==2.0.5
+async-timeout==4.0.2
+attrs==21.4.0
+backcall==0.2.0
+backports.functools-lru-cache==1.6.4
+beautifulsoup4==4.11.1
+bleach==5.0.0
+cachetools==5.0.0
+certifi==2021.10.8
+cffi==1.15.0
+charset-normalizer==2.0.12
+cycler==0.11.0
+debugpy==1.6.0
+decorator==4.4.2
+defusedxml==0.7.1
+entrypoints==0.4
+executing==0.8.3
+fastjsonschema==2.15.3
+fonttools==4.33.3
+freetype-py==2.3.0
+frozenlist==1.3.0
+fsspec==2022.3.0
 future==0.18.2
-google-auth @ file:///Users/hang/Library/Caches/pypoetry/artifacts/18/34/2c/6a4bfa384efb7fad5f24b07eebd0fdf0fb745823dfbf7e5599c3a53eae/google_auth-2.6.6-py2.py3-none-any.whl
-google-auth-oauthlib @ file:///Users/hang/Library/Caches/pypoetry/artifacts/2e/0c/38/4075b3067a5d88168f11189bf688a3466f7f419f0f29ca4c37a8be357b/google_auth_oauthlib-0.4.6-py2.py3-none-any.whl
-grpcio @ file:///Users/hang/Library/Caches/pypoetry/artifacts/c6/1a/f7/e009444bda616c25849ae4bb34625c10017ce432e2ad51e3ec07ea0472/grpcio-1.46.0-cp310-cp310-macosx_10_10_universal2.whl
+google-auth==2.6.6
+google-auth-oauthlib==0.4.6
+grpcio==1.46.0
 h5py==3.7.0
-idna @ file:///Users/hang/Library/Caches/pypoetry/artifacts/90/36/8c/81eabf6ac88608721ab27f439c9a6b9a8e6a21cc58c59ebb1a42720199/idna-3.3-py3-none-any.whl
-imageio @ file:///Users/hang/Library/Caches/pypoetry/artifacts/d0/37/a6/1354e01be2f38e802d5ba162e3f3c223cf33c15e58d51184f5551bbb40/imageio-2.9.0-py3-none-any.whl
-imageio-ffmpeg @ file:///Users/hang/Library/Caches/pypoetry/artifacts/f6/af/e8/4fdf0e5779bd3f9425a717e458a33b0f6d8ae273f670b72ce45017f304/imageio-ffmpeg-0.4.7.tar.gz
-ipykernel @ file:///Users/runner/miniforge3/conda-bld/ipykernel_1649684640162/work/dist/ipykernel-6.13.0-py3-none-any.whl
-ipython @ file:///Users/runner/miniforge3/conda-bld/ipython_1651238537678/work
-ipython-genutils @ file:///Users/hang/Library/Caches/pypoetry/artifacts/97/bf/ed/aa7b05b63dff09df96889c84191a871fdd62bb7c058bb77b381344d2bf/ipython_genutils-0.2.0-py2.py3-none-any.whl
-ipywidgets @ file:///Users/hang/Library/Caches/pypoetry/artifacts/17/83/16/a7cd1a14490286d1bcb51e8f8b3381e2de10fd9bb34e90a14f30d9b501/ipywidgets-7.7.0-py2.py3-none-any.whl
-jedi @ file:///Users/runner/miniforge3/conda-bld/jedi_1649067433487/work
-Jinja2 @ file:///Users/hang/Library/Caches/pypoetry/artifacts/49/36/ae/943f6cd852641f7249acddef711eb97d0c9ed91d7f435c798b6d7041ca/Jinja2-3.1.2-py3-none-any.whl
+idna==3.3
+imageio==2.9.0
+imageio-ffmpeg==0.4.7
+ipykernel==6.13.0
+ipython==8.3.0
+ipython-genutils==0.2.0
+ipywidgets==7.7.0
+jedi==0.18.1
+Jinja2==3.1.2
 joblib==1.1.0
 json5==0.9.8
-jsonschema @ file:///Users/hang/Library/Caches/pypoetry/artifacts/63/f2/9f/64b0faedf6af0237f9ba3f5f6d7e7ea276fc857ba2a169cde52e15a2fa/jsonschema-4.4.0-py3-none-any.whl
+jsonschema==4.4.0
 jupyter==1.0.0
-jupyter-client @ file:///home/conda/feedstock_root/build_artifacts/jupyter_client_1650972844302/work
-jupyter-console @ file:///Users/hang/Library/Caches/pypoetry/artifacts/b3/0d/2a/c8c845d7d1d943d30df7548e3225eb2c4aa4c143e742c935f60616a025/jupyter_console-6.4.3-py3-none-any.whl
-jupyter-core @ file:///Users/hang/Library/Caches/pypoetry/artifacts/f9/40/6f/eaa549863d427d2a4a19decdc0a0d5472b13df4936a3611c864f96c514/jupyter_core-4.10.0-py3-none-any.whl
+jupyter-client==7.3.0
+jupyter-console==6.4.3
+jupyter-core==4.10.0
 jupyterlab==1.2.8
-jupyterlab-pygments @ file:///Users/hang/Library/Caches/pypoetry/artifacts/d4/e6/05/8d8982e22f7b7c83e8cff9e69920376387ca4905d10ea9496a406d4182/jupyterlab_pygments-0.2.2-py2.py3-none-any.whl
+jupyterlab-pygments==0.2.2
 jupyterlab-server==1.0.9
-jupyterlab-widgets @ file:///Users/hang/Library/Caches/pypoetry/artifacts/d3/92/3f/b0fe0b6ba8405a3a7e09c74d956b54d914c634451d74daaf3f8c6df9a0/jupyterlab_widgets-1.1.0-py3-none-any.whl
+jupyterlab-widgets==1.1.0
 k3d==2.12.0
-kiwisolver @ file:///Users/hang/Library/Caches/pypoetry/artifacts/ee/a1/a4/31eb580060c6536b09665db68daf930a3b7299dc2f3ed6260fe97292eb/kiwisolver-1.4.2-cp310-cp310-macosx_11_0_arm64.whl
+kiwisolver==1.4.2
 lmfit==1.0.3
-Markdown @ file:///Users/hang/Library/Caches/pypoetry/artifacts/f3/c6/15/31b0fe09819889fa6d2a75b3e1c9645cba253902052e7fc773778b2725/Markdown-3.3.6-py3-none-any.whl
-MarkupSafe @ file:///Users/hang/Library/Caches/pypoetry/artifacts/17/b2/ca/c418fbb258b15d02aff6db598c5169b95eb81935f5e653b73401ef4f6a/MarkupSafe-2.1.1-cp310-cp310-macosx_10_9_universal2.whl
-matplotlib @ file:///Users/hang/Library/Caches/pypoetry/artifacts/e6/7d/dc/1378ad89957d993e9cb44cbd80feaf7ac9c0e15429d24a04906923cbe7/matplotlib-3.5.2-cp310-cp310-macosx_11_0_arm64.whl
-matplotlib-inline @ file:///home/conda/feedstock_root/build_artifacts/matplotlib-inline_1631080358261/work
-mistune @ file:///Users/hang/Library/Caches/pypoetry/artifacts/c6/73/08/45c43967056ae29b64960834e03a806fe6ea28b026ea60356df84a9063/mistune-0.8.4-py2.py3-none-any.whl
+Markdown==3.3.6
+MarkupSafe==2.1.1
+matplotlib==3.5.2
+matplotlib-inline==0.1.3
+mistune==0.8.4
 moviepy==1.0.3
-msgpack @ file:///Users/hang/Library/Caches/pypoetry/artifacts/8c/35/79/58dc34660e70f4bb5d17be832016d20231639763f70d6d1cb91b0a7ce9/msgpack-1.0.3-cp310-cp310-macosx_10_9_universal2.whl
-multidict @ file:///Users/hang/Library/Caches/pypoetry/artifacts/7c/69/c9/ef7bab4d56e743954573abc690127c3552a69b89fbc053c241b216869d/multidict-6.0.2-cp310-cp310-macosx_11_0_arm64.whl
-nbclient @ file:///Users/hang/Library/Caches/pypoetry/artifacts/0c/d4/6f/8b2bc1cc6aab1f578682ed5391528eaa7fcc50ab3c1a81df775ae960da/nbclient-0.6.2-py3-none-any.whl
-nbconvert @ file:///Users/hang/Library/Caches/pypoetry/artifacts/ce/cb/2f/001ab007301c5d77971b7bb553d047baab32f8043d0eb72e7cbfc946c3/nbconvert-6.5.0-py3-none-any.whl
-nbformat @ file:///Users/hang/Library/Caches/pypoetry/artifacts/17/fc/a5/f24f65098833c38f9b1c2207b1be664ad8514331535f4fc0d432b06834/nbformat-5.4.0-py3-none-any.whl
-nest-asyncio @ file:///home/conda/feedstock_root/build_artifacts/nest-asyncio_1648959695634/work
-networkx @ file:///Users/hang/Library/Caches/pypoetry/artifacts/d2/79/fe/9ea9fb188f39894c8e05e6d8648f439966f40466db7bcbf68b09090672/networkx-2.6.3-py3-none-any.whl
-notebook @ file:///Users/hang/Library/Caches/pypoetry/artifacts/8d/49/fb/cb111e6d0205f35fcce69e1fc27ca60abc30146e122ce6007e8bede403/notebook-6.4.11-py3-none-any.whl
-numpy @ file:///Users/hang/Library/Caches/pypoetry/artifacts/46/00/22/7edac5aaf3cb24c4b0d07e36cf6dd2bfd8de15c759075430fd7e428f42/numpy-1.21.1.zip
-oauthlib @ file:///Users/hang/Library/Caches/pypoetry/artifacts/95/e6/47/7094c27bbb7f2ce2e9f1aaa01594e6a57184c3f861abe85623bded8680/oauthlib-3.2.0-py3-none-any.whl
-packaging @ file:///home/conda/feedstock_root/build_artifacts/packaging_1637239678211/work
+msgpack==1.0.3
+multidict==6.0.2
+nbclient==0.6.2
+nbconvert==6.5.0
+nbformat==5.4.0
+nest-asyncio==1.5.5
+networkx==2.6.3
+notebook==6.4.11
+numpy==1.21.1
+oauthlib==3.2.0
+packaging==21.3
 pandas==1.4.3
-pandocfilters @ file:///Users/hang/Library/Caches/pypoetry/artifacts/ac/24/b2/c640c5e004e23e19857b8bff9651e954e369092471d58e9bedabeece77/pandocfilters-1.5.0-py2.py3-none-any.whl
-parso @ file:///home/conda/feedstock_root/build_artifacts/parso_1638334955874/work
-pexpect @ file:///home/conda/feedstock_root/build_artifacts/pexpect_1602535608087/work
-pickleshare @ file:///home/conda/feedstock_root/build_artifacts/pickleshare_1602536217715/work
-Pillow @ file:///Users/hang/Library/Caches/pypoetry/artifacts/e2/68/a0/2263a53a329744a2cbee2c8a852428a2aab566ad1a935aec9bcee0eb77/Pillow-7.2.0.tar.gz
-proglog @ file:///Users/hang/Library/Caches/pypoetry/artifacts/21/a1/aa/b210a0e744db6a43b36da53d2240c4b0294136e0eeb04971d5f2491d72/proglog-0.1.9.tar.gz
-prometheus-client @ file:///Users/hang/Library/Caches/pypoetry/artifacts/09/81/23/73a10bc09cee1ef1ac8675e9cb1286b87536a9f78cfda729c4d9028be8/prometheus_client-0.14.1-py3-none-any.whl
-prompt-toolkit @ file:///home/conda/feedstock_root/build_artifacts/prompt-toolkit_1649130487073/work
-protobuf @ file:///Users/hang/Library/Caches/pypoetry/artifacts/2d/39/3d/0bb0670bb22a971d0b403257957afa4c5b4ad3367ee7744fc02372b33e/protobuf-3.20.1-cp310-cp310-macosx_10_9_universal2.whl
-psutil @ file:///Users/runner/miniforge3/conda-bld/psutil_1648873056600/work
-ptyprocess @ file:///home/conda/feedstock_root/build_artifacts/ptyprocess_1609419310487/work/dist/ptyprocess-0.7.0-py2.py3-none-any.whl
-pure-eval @ file:///home/conda/feedstock_root/build_artifacts/pure_eval_1642875951954/work
-pyasn1 @ file:///Users/hang/Library/Caches/pypoetry/artifacts/c2/76/ab/a9803cfd0691d31abaeaaf0c6477e76f673b71f11a2959d0ce3ea20775/pyasn1-0.4.8-py2.py3-none-any.whl
-pyasn1-modules @ file:///Users/hang/Library/Caches/pypoetry/artifacts/16/bd/80/44c2051a4b84112a472b7a8d0cf0f817e818771f012d02f042b684a05d/pyasn1_modules-0.2.8-py2.py3-none-any.whl
-pycparser @ file:///Users/hang/Library/Caches/pypoetry/artifacts/08/b1/1b/4618699096207aa9eba9fa35118b2b6544fd1c9c2a79ea3601a3d325a0/pycparser-2.21-py2.py3-none-any.whl
-pyDeprecate @ file:///Users/hang/Library/Caches/pypoetry/artifacts/26/37/ef/057b0aefc0b5cafa2cb9684dafbfb538bb8c516e59d1814ff72a042946/pyDeprecate-0.3.2-py3-none-any.whl
-pyglet @ file:///Users/hang/Library/Caches/pypoetry/artifacts/d7/12/1e/ddf8703c089e341acda1497411ceb33f002eb6a6ce997179f7a1dd49f4/pyglet-1.5.23-py3-none-any.whl
-Pygments @ file:///home/conda/feedstock_root/build_artifacts/pygments_1650904496387/work
-PyOpenGL @ file:///Users/hang/Library/Caches/pypoetry/artifacts/93/69/57/98cdf750a9d9fb833e098f2e34b3c8ef77035e7beae4ab88d515d4dba2/PyOpenGL-3.1.0.tar.gz
-pyparsing @ file:///home/conda/feedstock_root/build_artifacts/pyparsing_1649603503565/work
+pandocfilters==1.5.0
+parso==0.8.3
+pexpect==4.8.0
+pickleshare==0.7.5
+Pillow==7.2.0
+pip==22.1.2
+proglog==0.1.9
+prometheus-client==0.14.1
+prompt-toolkit==3.0.29
+protobuf==3.20.1
+psutil==5.9.0
+ptyprocess==0.7.0
+pure-eval==0.2.2
+pyasn1==0.4.8
+pyasn1-modules==0.2.8
+pycparser==2.21
+pyDeprecate==0.3.2
+pyglet==1.5.23
+Pygments==2.12.0
+PyOpenGL==3.1.0
+pyparsing==3.0.8
 pyrender==0.1.45
-pyrsistent @ file:///Users/hang/Library/Caches/pypoetry/artifacts/62/2f/dd/49178c9753d294b1a56af9003a9a9a387bed36538f0528d16e0cab46e8/pyrsistent-0.18.1-cp310-cp310-macosx_10_9_universal2.whl
-python-dateutil @ file:///home/conda/feedstock_root/build_artifacts/python-dateutil_1626286286081/work
+pyrsistent==0.18.1
+python-dateutil==2.8.2
 pytorch-lightning==1.6.3
 pytz==2022.1
-PyWavelets @ file:///Users/hang/Library/Caches/pypoetry/artifacts/82/b1/4b/cecb934042ba0e1daf8a9bf85b46f6809ca9e8093bdfd08d7a1cc8b755/PyWavelets-1.3.0-cp310-cp310-macosx_11_0_arm64.whl
-PyYAML @ file:///Users/hang/Library/Caches/pypoetry/artifacts/b7/39/92/8bdbcdf8ebd1fea6988a1f3f061f52aaaf2fbb8ec3af7618aebca532b7/PyYAML-6.0-cp310-cp310-macosx_11_0_arm64.whl
-pyzmq @ file:///Users/runner/miniforge3/conda-bld/pyzmq_1649055704190/work
-qtconsole @ file:///Users/hang/Library/Caches/pypoetry/artifacts/ef/e8/bd/8477daf7c4f9b4239c289a18811d1f202298729c597356e172ccb36a68/qtconsole-5.3.0-py3-none-any.whl
-QtPy @ file:///Users/hang/Library/Caches/pypoetry/artifacts/89/75/ec/6ed9402b8e2776cdcf5addc40d0d1b87c8c19a88dfe95eceb9631f92a7/QtPy-2.1.0-py3-none-any.whl
-requests @ file:///Users/hang/Library/Caches/pypoetry/artifacts/d2/b2/c6/a04ce59140c6739203837d8dd0f518e29051b7ab61d2f34d4fd4241d30/requests-2.27.1-py2.py3-none-any.whl
-requests-oauthlib @ file:///Users/hang/Library/Caches/pypoetry/artifacts/80/d7/d7/c91b9cd3edf751cf664d93c1376619758fc1080396ad1e76f5aaf274bb/requests_oauthlib-1.3.1-py2.py3-none-any.whl
-rsa @ file:///Users/hang/Library/Caches/pypoetry/artifacts/70/0c/f9/97e3edaca4ca8b69ad6238dbce3ca02c48f17972f71e2ce56b44a6a0e9/rsa-4.8-py3-none-any.whl
+PyWavelets==1.3.0
+PyYAML==6.0
+pyzmq==22.3.0
+qtconsole==5.3.0
+QtPy==2.1.0
+requests==2.27.1
+requests-oauthlib==1.3.1
+rsa==4.8
 scikit-image==0.19.2
 scikit-learn==1.1.1
 scipy==1.8.1
-Send2Trash @ file:///Users/hang/Library/Caches/pypoetry/artifacts/8a/c3/f4/94f9ef351ef08b52f584aefd298f81d84b49d0df0032112459d77fb6e4/Send2Trash-1.8.0-py3-none-any.whl
-setuptools-scm @ file:///Users/hang/Library/Caches/pypoetry/artifacts/07/32/3e/daaca33fafcc46341f41b03799ee9e5818f84978949190fae930908209/setuptools_scm-6.4.2-py3-none-any.whl
-six @ file:///home/conda/feedstock_root/build_artifacts/six_1620240208055/work
+Send2Trash==1.8.0
+setuptools==62.1.0
+setuptools-scm==6.4.2
+six==1.16.0
 sklearn==0.0
-soupsieve @ file:///Users/hang/Library/Caches/pypoetry/artifacts/9b/5a/a8/0949b7240493f355f5d574cbe0389102ac50a52583ec465be6d377cac7/soupsieve-2.3.2.post1-py3-none-any.whl
-stack-data @ file:///home/conda/feedstock_root/build_artifacts/stack_data_1644872665635/work
-tensorboard @ file:///Users/hang/Library/Caches/pypoetry/artifacts/33/b9/cd/bf71aae608e182c13a8ef75ce87a15b13d882e00d03cb3975681c672b6/tensorboard-2.9.0-py3-none-any.whl
-tensorboard-data-server @ file:///Users/hang/Library/Caches/pypoetry/artifacts/b4/f7/c1/b336e3f9b26a6bfb675590ee2ceaa8404414f9a2453dfe75f76a16ceef/tensorboard_data_server-0.6.1-py3-none-any.whl
-tensorboard-plugin-wit @ file:///Users/hang/Library/Caches/pypoetry/artifacts/bc/57/2d/6b3ad65b065ef9bbd34afcc76b29aaaf1ec3316d106bf10397a5b5c3be/tensorboard_plugin_wit-1.8.1-py3-none-any.whl
+soupsieve==2.3.2.post1
+stack-data==0.2.0
+tensorboard==2.9.0
+tensorboard-data-server==0.6.1
+tensorboard-plugin-wit==1.8.1
 tensorboardX==2.5.1
-terminado @ file:///Users/hang/Library/Caches/pypoetry/artifacts/ce/d9/a9/a133ae3f9b4fd5ced304cdd676e27598adbb6a6b03d1740e4d2f10fde9/terminado-0.13.3-py3-none-any.whl
+terminado==0.13.3
 threadpoolctl==3.1.0
-tifffile @ file:///Users/hang/Library/Caches/pypoetry/artifacts/c6/a3/bf/01322ef76c77d751f8d15752c0ff17178249ed3edcd68398abe568b6b5/tifffile-2021.11.2-py3-none-any.whl
-tinycss2 @ file:///Users/hang/Library/Caches/pypoetry/artifacts/b5/93/7b/8c2c68c7d7452134796296409a265020836c261130d395b79c3b198734/tinycss2-1.1.1-py3-none-any.whl
-tomli @ file:///Users/hang/Library/Caches/pypoetry/artifacts/62/12/b6/6db9ebb9c8e1a6c5aa8a92ae73098d8119816b5e8507490916621bc305/tomli-2.0.1-py3-none-any.whl
-torch @ file:///Users/hang/Library/Caches/pypoetry/artifacts/5a/85/ef/f9c7d57e2a0d2ea3c09ece28b19079abeddfaa9c44f7ebaaecb852b7c4/torch-1.11.0-cp310-none-macosx_11_0_arm64.whl
-torchmetrics @ file:///Users/hang/Library/Caches/pypoetry/artifacts/0f/68/5d/5928c3cc0c070d0de855185e384c58b29b2ad81a26bac18ecaf82eb6f6/torchmetrics-0.8.1-py3-none-any.whl
-tornado @ file:///Users/runner/miniforge3/conda-bld/tornado_1648827336777/work
-tqdm @ file:///Users/hang/Library/Caches/pypoetry/artifacts/9c/70/8c/d9fd60c1049cc4dba00815d66d598e9d5f265d4d59489e074827e331a9/tqdm-4.64.0-py2.py3-none-any.whl
-traitlets @ file:///home/conda/feedstock_root/build_artifacts/traitlets_1635260543454/work
-traittypes @ file:///Users/hang/Library/Caches/pypoetry/artifacts/ea/6f/1c/38893a4c4dae617e8982c11f81f279fcb4535f2a54901acb65dc03adc8/traittypes-0.2.1-py2.py3-none-any.whl
-trimesh @ file:///Users/hang/Library/Caches/pypoetry/artifacts/04/4c/e4/a336f7a0703ee4cfad8a6bd5eddbbb2448c1ab7aa9d4c74af02efea141/trimesh-3.11.2-py3-none-any.whl
-typing_extensions @ file:///Users/hang/Library/Caches/pypoetry/artifacts/fd/c1/a6/be1be120e99810678690f235f5340cc134278c946d32a8683d59a18277/typing_extensions-4.2.0-py3-none-any.whl
+tifffile==2021.11.2
+tinycss2==1.1.1
+tomli==2.0.1
+torch==1.11.0
+torchmetrics==0.8.1
+tornado==6.1
+tqdm==4.64.0
+traitlets==5.1.1
+traittypes==0.2.1
+trimesh==3.11.2
+typing_extensions==4.2.0
 uncertainties==3.1.7
-urllib3 @ file:///Users/hang/Library/Caches/pypoetry/artifacts/88/1c/d5/a55ed0245e5d7cd3a9f40dd75733644cbf7b7d94a6c521eb6c027a326c/urllib3-1.26.9-py2.py3-none-any.whl
-wcwidth @ file:///home/conda/feedstock_root/build_artifacts/wcwidth_1600965781394/work
-webencodings @ file:///Users/hang/Library/Caches/pypoetry/artifacts/2c/71/d6/0bb3633964388ed16be6b71327528e3acf005b646a54e65547041575ab/webencodings-0.5.1-py2.py3-none-any.whl
-Werkzeug @ file:///Users/hang/Library/Caches/pypoetry/artifacts/34/38/89/78911cfcd7dec75796d6056c730d94f730967bfe4fb4c5192b8d0d81ec/Werkzeug-2.1.2-py3-none-any.whl
-widgetsnbextension @ file:///Users/hang/Library/Caches/pypoetry/artifacts/57/cc/63/e4f2f7ab263cbf1827114f2b2af6fe168b48a485225396c09cfc24a24e/widgetsnbextension-3.6.0-py2.py3-none-any.whl
-yarl @ file:///Users/hang/Library/Caches/pypoetry/artifacts/0f/c5/a5/c00a4615b1af40c84c7f43bb7cac4f3c244d6bcb66aff26ca8144ef596/yarl-1.7.2-cp310-cp310-macosx_11_0_arm64.whl
+urllib3==1.26.9
+wcwidth==0.2.5
+webencodings==0.5.1
+Werkzeug==2.1.2
+wheel==0.37.1
+widgetsnbextension==3.6.0
+yarl==1.7.2
