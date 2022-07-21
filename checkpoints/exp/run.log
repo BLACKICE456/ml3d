@@ -1,3 +1,0 @@
-{'model_path': 'dcp-master/pretrained/dcp_v1.t7', 'exp_name': 'exp', 'model': 'dcp', 'emb_nn': 'dgcnn', 'pointer': 'identity', 'head': 'svd', 'eval': True, 'emb_dims': 512, 'cycle': False}
-{'model_path': 'dcp-master/pretrained/dcp_v1.t7', 'exp_name': 'exp', 'model': 'dcp', 'emb_nn': 'dgcnn', 'pointer': 'identity', 'head': 'svd', 'eval': True, 'emb_dims': 512, 'cycle': False}
-{'model_path': 'dcp-master/pretrained/dcp_v1.t7', 'exp_name': 'exp', 'model': 'dcp', 'emb_nn': 'dgcnn', 'pointer': 'identity', 'head': 'svd', 'eval': True, 'emb_dims': 512, 'cycle': False}
