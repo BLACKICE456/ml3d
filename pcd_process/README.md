@@ -1,6 +1,6 @@
 # Run the py file
 ## param:
-- --pcd=[filename], pcd file name (including path)
+- --pcd=[dirpath], pcd dir path (ex: dataset/)
 - --point_cloud=[filename], point cloud (txt) file that you want to save
 
 ## example:
