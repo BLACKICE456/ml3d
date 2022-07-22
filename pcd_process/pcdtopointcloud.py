@@ -1,22 +1,24 @@
 import open3d as o3d
 import numpy as np
 import argparse
+import tqdm
 
 
 def pcd2pointcloud(pcd_path, pointcloud_file):
-    for i in range(100):
+    for i in range(1):
+        print('---------------- loading pcd file '+str(i)+ '----------------')
         for p in range(21):
-            pcd = o3d.io.read_point_cloud(pcd_path / str(i) / str(p)+'.pcd')
-            print(pcd.has_colors)
+            pcd = o3d.io.read_point_cloud(pcd_path +'\\'+ str(i) + '\\'+ str(p*25)+'.pcd')
             points = np.array(pcd.points)
             point_cloud = ''
-            file = open(pointcloud_file+str(i), 'w+')
-            for i, point in enumerate(points):
+            file = open(pointcloud_file+str(i)+'_'+str(p*25)+'.txt', 'w+')
+            for k, point in enumerate(points):
                 point_cloud = point_cloud + str(point[0]) + " " + str(point[1]) + " " + str(point[2]) + " " \
-                    + str(pcd.colors[i][0]*255) + ' ' + str(pcd.colors[i][1]*255) + ' ' + str(pcd.colors[i][2]*255) +'\n'
+                    + str(pcd.colors[k][0]*255) + ' ' + str(pcd.colors[k][1]*255) + ' ' + str(pcd.colors[k][2]*255) +'\n'
 
-            file.write(str(i)/str(p)/point_cloud)
+            file.write(point_cloud)
             file.close()
+            print(pointcloud_file+str(i)+'_'+str(p)+'.txt is successfully created.')
 
 def main():
     parser = argparse.ArgumentParser(description='PCD file transformation')
