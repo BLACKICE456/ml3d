@@ -4,13 +4,14 @@ import argparse
 
 
 def pcd2pointcloud(pcd_file, pointcloud_file):
-    
     pcd = o3d.io.read_point_cloud(pcd_file)
+    print(pcd.has_colors)
     points = np.array(pcd.points)
     point_cloud = ''
     file = open(pointcloud_file, 'w+')
-    for point in points:
-        point_cloud = point_cloud + str(point)
+    for i, point in enumerate(points):
+        point_cloud = point_cloud + str(point[0]) + " " + str(point[1]) + " " + str(point[2]) + " " \
+            + str(pcd.colors[i][0]*255) + ' ' + str(pcd.colors[i][1]*255) + ' ' + str(pcd.colors[i][2]*255) +'\n'
 
     file.write(point_cloud)
     file.close()
