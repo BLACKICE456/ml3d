@@ -1,6 +1,7 @@
 import numpy as np
+import os
 
-abs_path = '/home/yuxin/pySceneNetRGBD/ground_truth/'
+abs_path = os.path.abspath(os.path.dirname(__file__))+'/scenenet/ground_truth/'
 
 def normalize(v):
     return v/np.linalg.norm(v)
@@ -22,12 +23,12 @@ def camera_to_world_with_pose(view_pose):
     return np.linalg.inv(world_to_camera_with_pose(view_pose))
 
 def transformation(traj_index, first_frame, second_frame):
-    file = open("/home/yuxin/pySceneNetRGBD/ground_truth/"+str(traj_index)+".txt",'r')
+    file = open(abs_path+str(traj_index)+".txt",'r')
     
-    first_camera_x = first_camera_y = first_camera_z = 0.0
-    first_lookat_x = first_lookat_y = first_lookat_z = 0.0
-    second_camera_x = second_camera_y = second_camera_z = 0.0
-    second_x = second_lookat_y = second_lookat_z = 0.0
+    first_camera_x = first_camera_y = first_camera_z = 6.0
+    first_lookat_x = first_lookat_y = first_lookat_z = 2.0
+    second_camera_x = second_camera_y = second_camera_z = 2.0
+    second_lookat_x = second_lookat_y = second_lookat_z = 6.0
 
     line = file.readline()
     while line:
@@ -48,7 +49,7 @@ def transformation(traj_index, first_frame, second_frame):
             second_camera_z = float(line.split(' ')[6].replace('\n',''))
 
             first_pose = {
-                 'lookat':np.array([first_lookat_z,first_lookat_y,first_lookat_z]),
+                 'lookat':np.array([first_lookat_x,first_lookat_y,first_lookat_z]),
                  'camera':np.array([first_camera_x,first_camera_y,first_camera_z])
             }
 
@@ -61,10 +62,12 @@ def transformation(traj_index, first_frame, second_frame):
             r2 = world_to_camera_with_pose(second_pose)
             transformation = np.dot(r2, np.linalg.inv(r1))
 
+            file.close()
             return transformation
         
         line = file.readline()
+    file.close()
 
 
-test = transformation(0,0,25)
+test = transformation(223,1550,1650)
 print(test)

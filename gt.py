@@ -1,7 +1,7 @@
-import re
 import numpy as np
+import os
 #open file
-abs_path = '/home/yuxin/pySceneNetRGBD/ground_truth/'
+abs_path = os.path.abspath(os.path.dirname(__file__))+'/scenenet/ground_truth/'
 
 def normalize(v):
     return v/np.linalg.norm(v)
@@ -24,7 +24,7 @@ def camera_to_world_with_pose(view_pose):
 
 
 
-with open("/home/yuxin/pySceneNetRGBD/ground_truth/gt.txt",'r') as f: 
+with open(os.path.abspath(os.path.dirname(__file__))+"/scenenet/gt.txt",'r') as f:
 # read .txt line by line
 
     #initialization
@@ -36,8 +36,8 @@ with open("/home/yuxin/pySceneNetRGBD/ground_truth/gt.txt",'r') as f:
     so_flag=sc_flag=camere_flag=lookat_flag = 0 #flag for shutter_close and shutter open
     
     old_pose = {
-        'lookat': np.array([0,0,0]),
-        'camera': np.array([0,0,0])
+        'lookat': np.array([3,3,4]),
+        'camera': np.array([3,8,6])
     }
 
     line = f.readline() #first line
