@@ -35,10 +35,10 @@ with open("/home/yuxin/pySceneNetRGBD/ground_truth/gt.txt",'r') as f:
     sc_lookat_x=sc_lookat_y=sc_lookat_z = 0. #shutter_close lookat xyz
     so_flag=sc_flag=camere_flag=lookat_flag = 0 #flag for shutter_close and shutter open
     
-    old_pose = {
-        'lookat': np.array([0,0,0]),
-        'camera': np.array([0,0,0])
-    }
+    #old_pose = {
+    #    'lookat': np.array([0,0,0]),
+    #    'camera': np.array([0,0,0])
+    #}
 
     line = f.readline() #first line
     while line:
@@ -120,21 +120,23 @@ with open("/home/yuxin/pySceneNetRGBD/ground_truth/gt.txt",'r') as f:
             lookat_y = (float(sc_lookat_y) + float(so_lookat_y))/2
             lookat_z = (float(sc_lookat_z) + float(so_lookat_z))/2
 
-            new_pose = {
-                'lookat':np.array([lookat_x,lookat_y,lookat_z]),
-                'camera':np.array([camera_x,camera_y,camera_z])
-            }
+            file.write(frame_num+' '+str(lookat_x)+' '+str(lookat_y)+' '+str(lookat_z)+' '+str(camera_x)+' '+str(camera_y)+' '+str(camera_z)+'\n')
+
+            # new_pose = {
+            #     'lookat':np.array([lookat_x,lookat_y,lookat_z]),
+            #     'camera':np.array([camera_x,camera_y,camera_z])
+            # }
             
-            r1 = world_to_camera_with_pose(old_pose)
-            r2 = world_to_camera_with_pose(new_pose)
-            transformation = np.dot(r2, np.linalg.inv(r1))
+            # r1 = world_to_camera_with_pose(old_pose)
+            # r2 = world_to_camera_with_pose(new_pose)
+            # transformation = np.dot(r2, np.linalg.inv(r1))
 
-            file.write(frame_num+' '+str(transformation[0][0])+' '+str(transformation[0][1])+' '+str(transformation[0][2])+' '+str(transformation[0][3])
-                                +' '+str(transformation[1][0])+' '+str(transformation[1][1])+' '+str(transformation[1][2])+' '+str(transformation[1][3])
-                                +' '+str(transformation[2][0])+' '+str(transformation[2][1])+' '+str(transformation[2][2])+' '+str(transformation[2][3])
-                                +' '+str(transformation[3][0])+' '+str(transformation[3][1])+' '+str(transformation[3][2])+' '+str(transformation[3][3])+'\n')
+            # file.write(frame_num+' '+str(transformation[0][0])+' '+str(transformation[0][1])+' '+str(transformation[0][2])+' '+str(transformation[0][3])
+            #                     +' '+str(transformation[1][0])+' '+str(transformation[1][1])+' '+str(transformation[1][2])+' '+str(transformation[1][3])
+            #                     +' '+str(transformation[2][0])+' '+str(transformation[2][1])+' '+str(transformation[2][2])+' '+str(transformation[2][3])
+            #                     +' '+str(transformation[3][0])+' '+str(transformation[3][1])+' '+str(transformation[3][2])+' '+str(transformation[3][3])+'\n')
 
-            old_pose = new_pose
+            # old_pose = new_pose
             
         line = f.readline() #read next line
     
