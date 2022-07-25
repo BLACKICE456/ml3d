@@ -29,9 +29,7 @@ We segment the objects in the images using a dataset, and we use DCP (initialize
 ├── gt.py
 ├── icp.py
 ├── pcd_generator/
-├── pcd_process
-│   ├── README.md
-│   └── pcdtopointcloud.py
+├── pcd_process/
 ├── requirements.txt
 ├── simpleICP-master/
 ├── test.ipynb
