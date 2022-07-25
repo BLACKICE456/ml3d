@@ -20,15 +20,7 @@ We segment the objects in the images using a dataset, and we use DCP (initialize
 ├── README.md
 ├── __init__.py
 ├── data.py
-├── dcp-master
-│   ├── data/
-│   ├── data.py
-│   ├── dcp_matrix.txt
-│   ├── main.py
-│   ├── model.py
-│   ├── pretrained/
-│   ├── readme.md
-│   └── util.py
+├── dcp-master/
 ├── dcp.py
 ├── dcp_icp.ipynb
 ├── dcp_v2.t7
@@ -41,22 +33,7 @@ We segment the objects in the images using a dataset, and we use DCP (initialize
 │   ├── README.md
 │   └── pcdtopointcloud.py
 ├── requirements.txt
-├── simpleICP-master
-│   ├── LICENSE
-│   ├── README.md
-│   ├── __init__.py
-│   ├── data/
-│   ├── icp_matrix.txt
-│   ├── simpleicp
-│   │   ├── __init__.py
-│   │   ├── corrpts.py
-│   │   ├── mathutils.py
-│   │   ├── optimization.py
-│   │   ├── pointcloud.py
-│   │   ├── simpleicp.py
-│   │   └── tests/
-│   ├── test.ipynb
-│   └── tests/
+├── simpleICP-master/
 ├── test.ipynb
 ├── test_case/
 ├── transformation.py
