@@ -9,7 +9,7 @@ import numpy as np
 import pandas as pd
 from scipy import spatial
 
-from . import mathutils
+from mathutils import euler_coord_to_homogeneous_coord, homogeneous_coord_to_euler_coord, euler_angles_to_linearized_rotation_matrix, euler_angles_to_rotation_matrix, rotation_matrix_to_euler_angles, create_homogeneous_transformation_matrix
 
 
 class PointCloud(pd.DataFrame):
@@ -208,9 +208,9 @@ class PointCloud(pd.DataFrame):
         Args:
             H (np.array): Homogenous transformation matrix H of shape (4,4).
         """
-        Xh = mathutils.euler_coord_to_homogeneous_coord(self.X)
+        Xh = euler_coord_to_homogeneous_coord(self.X)
         Xh = np.transpose(H @ Xh.T)  # transform in-place to save memory
-        Xe = mathutils.homogeneous_coord_to_euler_coord(Xh)
+        Xe = homogeneous_coord_to_euler_coord(Xh)
 
         self["x"] = Xe[:, 0]
         self["y"] = Xe[:, 1]

@@ -16,12 +16,12 @@
 int main(int argc, char** argv)
 {
 
-	string home_path = "/home/drla/ml3d/pySceneNetRGBD/data/val/0/";
+	std::string home_path = "../scenenet/val/0/";
 
 	// 1000 scenes
-	for(int index_trajectory=0;index_trajectory<1000;index_trajectory++){
+	for(int index_trajectory=0;index_trajectory<=150;index_trajectory++){
 
-		string dir_trajectory = home_path + to_string(index_trajectory);
+		std::string dir_trajectory = home_path + std::to_string(index_trajectory);
 
 		// 7475 is the max index for images, interval is 25
 		for(int index_image=0;index_image<=7475;index_image += 25){
@@ -29,7 +29,7 @@ int main(int argc, char** argv)
 			pcl::PCDReader reader;
 			pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>), cloud_f_1(new pcl::PointCloud<pcl::PointXYZ>), cloud_f(new pcl::PointCloud<pcl::PointXYZ>);
 			
-			string pcd_before = dir_trajectory + to_string(index_image) + ".pcd"
+			std::string pcd_before = dir_trajectory + "/" + std::to_string(index_image) + ".pcd";
 			reader.read(pcd_before, *cloud);
 			std::cout << "PointCloud before filtering has: " << cloud->points.size() << " data points." << std::endl; //*
 		
@@ -89,9 +89,10 @@ int main(int argc, char** argv)
 			}
 		
 		
+			/*
 			boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer(new pcl::visualization::PCLVisualizer("3D Viewer"));
 		
-			/*
+			
 			int v1(0);
 			viewer->createViewPort(0.0, 0.0, 0.5, 1.0, v1);
 			viewer->setBackgroundColor(0, 0, 0, v1);
@@ -119,7 +120,7 @@ int main(int argc, char** argv)
 			// output .pcd file without walls, floors and ceilings
 			int points_len = cloud_filtered->points.size();
 
-			string pcd_after = dir_trajectory + to_string(index_image) + "_after_filtering.pcd"
+			std::string pcd_after = dir_trajectory + "/" + std::to_string(index_image) + "_after_filtering.pcd";
 			std::string pc_name = pcd_after;
 
 			FILE *fp = fopen(pc_name.c_str(), "wb");

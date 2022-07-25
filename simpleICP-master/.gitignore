@@ -15,3 +15,5 @@ octave/octave-workspace
 python/build/
 rust/
 python/debug/
+__pycache__/
+simpleicp/__pycache__/

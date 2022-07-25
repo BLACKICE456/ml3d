@@ -12,8 +12,8 @@ from typing import List, Optional, Tuple
 import lmfit
 import numpy as np
 
-from . import corrpts, mathutils
-
+from mathutils import euler_coord_to_homogeneous_coord, homogeneous_coord_to_euler_coord, euler_angles_to_linearized_rotation_matrix, euler_angles_to_rotation_matrix, rotation_matrix_to_euler_angles, create_homogeneous_transformation_matrix
+from corrpts import CorrPts
 
 class SimpleICPOptimization:
     """Class for setting up and solve least squares optimization for simpleICP.
@@ -26,7 +26,7 @@ class SimpleICPOptimization:
 
     def __init__(
         self,
-        corr_pts: corrpts.CorrPts,
+        corr_pts: CorrPts,
         distance_weights: Optional[float],  # can also be None
         rbp_initial_values: Tuple[float],
         rbp_observed_values: Tuple[float],
@@ -172,7 +172,7 @@ class SimpleICPOptimization:
     @staticmethod
     def __residuals(
         params: lmfit.Parameters,
-        cp: corrpts.CorrPts,
+        cp: CorrPts,
         distance_weights: float,
     ) -> np.array:
         """Returns weighted residuals as numpy array for lmfit."""
@@ -215,7 +215,7 @@ class SimpleICPOptimization:
         params: lmfit.Parameters, x: np.array, y: np.array, z: np.array
     ) -> Tuple[np.array, np.array, np.array]:
         """Transform point cloud by rigid body transformation."""
-        R = mathutils.euler_angles_to_rotation_matrix(
+        R = euler_angles_to_rotation_matrix(
             params["alpha1"].value,
             params["alpha2"].value,
             params["alpha3"].value,
@@ -229,12 +229,12 @@ class SimpleICPOptimization:
             ]
         )
 
-        H = mathutils.create_homogeneous_transformation_matrix(R, t)
+        H = create_homogeneous_transformation_matrix(R, t)
 
         Xe = np.column_stack((x, y, z))
-        Xh = mathutils.euler_coord_to_homogeneous_coord(Xe)
+        Xh = euler_coord_to_homogeneous_coord(Xe)
         Xh_transformed = np.transpose(H @ Xh.T)
-        Xe_transformed = mathutils.homogeneous_coord_to_euler_coord(Xh_transformed)
+        Xe_transformed = homogeneous_coord_to_euler_coord(Xh_transformed)
 
         x_transformed = Xe_transformed[:, 0]
         y_transformed = Xe_transformed[:, 1]
@@ -341,7 +341,7 @@ class RigidBodyParameters:
     def H(self) -> np.array:
         """Returns homogeneous transformation matrix from estimated values."""
 
-        R = mathutils.euler_angles_to_rotation_matrix(
+        R = euler_angles_to_rotation_matrix(
             self.alpha1.estimated_value,
             self.alpha2.estimated_value,
             self.alpha3.estimated_value,
@@ -351,7 +351,7 @@ class RigidBodyParameters:
             [self.tx.estimated_value, self.ty.estimated_value, self.tz.estimated_value]
         )
 
-        H = mathutils.create_homogeneous_transformation_matrix(R, t)
+        H = create_homogeneous_transformation_matrix(R, t)
 
         return H
 

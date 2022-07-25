@@ -14,7 +14,10 @@ from typing import Optional, Tuple
 
 import numpy as np
 
-from . import corrpts, mathutils, optimization, pointcloud
+from corrpts import CorrPts
+from mathutils import euler_coord_to_homogeneous_coord, homogeneous_coord_to_euler_coord, euler_angles_to_linearized_rotation_matrix, euler_angles_to_rotation_matrix, rotation_matrix_to_euler_angles, create_homogeneous_transformation_matrix
+from optimization import SimpleICPOptimization, Parameter, RigidBodyParameters
+from pointcloud import PointCloud
 
 # TODO Rename rbp (rigid-body parameters) to rbtp (rigid-body transformation parameters)
 
@@ -30,8 +33,8 @@ class SimpleICP:
 
     def add_point_clouds(
         self,
-        pc_fix: pointcloud.PointCloud,
-        pc_mov: pointcloud.PointCloud,
+        pc_fix: PointCloud,
+        pc_mov: PointCloud,
     ) -> None:
         """Add fixed and movable point cloud.
 
@@ -57,7 +60,7 @@ class SimpleICP:
         rbp_observed_values: Tuple[float] = (0.0, 0.0, 0.0, 0.0, 0.0, 0.0),
         rbp_observation_weights: Tuple[float] = (0.0, 0.0, 0.0, 0.0, 0.0, 0.0),
         debug_dirpath: str = "",
-    ) -> Tuple[np.array, np.array, optimization.RigidBodyParameters]:
+    ) -> Tuple[np.array, np.array, RigidBodyParameters]:
         """Run simpleICP algorithm.
 
         Note: See https://github.com/pglira/simpleICP for an extended description of the algorithm
@@ -119,8 +122,8 @@ class SimpleICP:
             rbp_observed_values[i] = rbp_observed_values[i] * np.pi / 180
 
         # Compose initial H from observed rbp values
-        H = mathutils.create_homogeneous_transformation_matrix(
-            mathutils.euler_angles_to_rotation_matrix(
+        H = create_homogeneous_transformation_matrix(
+            euler_angles_to_rotation_matrix(
                 rbp_observed_values[0], rbp_observed_values[1], rbp_observed_values[2]
             ),
             rbp_observed_values[3:],
@@ -153,7 +156,7 @@ class SimpleICP:
         # print("Start iterations ...")
         for it in range(0, max_iterations):
 
-            cp = corrpts.CorrPts(self.pc1, self.pc2)
+            cp = CorrPts(self.pc1, self.pc2)
 
             self.pc2.transform_by_H(H)  # temporarily transform pc2
             if debug_dirpath:
@@ -200,7 +203,7 @@ class SimpleICP:
             if distance_weights is None:
                 distance_weights = 1 / (np.std(cp.point_to_plane_distances) ** 2)
 
-            optim = optimization.SimpleICPOptimization(
+            optim = SimpleICPOptimization(
                 cp,
                 distance_weights,
                 rbp_initial_values,

@@ -1,1 +1,3 @@
 scenenet/*
+__pycache__/*
+checkpoints/*

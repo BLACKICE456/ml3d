@@ -8,13 +8,13 @@ import numpy as np
 import pandas as pd
 from scipy import spatial, stats
 
-from . import pointcloud
+from pointcloud import PointCloud
 
 
 class CorrPts:
     """Class for managing corresponding points between two overlapping point clouds."""
 
-    def __init__(self, pc1: pointcloud.PointCloud, pc2: pointcloud.PointCloud) -> None:
+    def __init__(self, pc1: PointCloud, pc2: PointCloud) -> None:
         """Constructor method.
 
         Args:

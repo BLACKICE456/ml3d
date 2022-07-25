@@ -4,6 +4,7 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <pcl/point_types.h>
 #include <pcl/io/pcd_io.h>
+#include <string>
 
 using namespace std;
 
@@ -73,13 +74,13 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr depth2cloud(cv::Mat rgb, cv::Mat depth)
  
 int main( int argc, char** argv ){
 
-    string home_path = "/home/yuxin/pySceneNetRGBD/data/val/0/";
+    string home_path = "../scenenet/val/0/";
     
     
     int index_trajectory;
 
     //change to index_trajectory<100
-    for(index_trajectory=0;index_trajectory<1;index_trajectory++){
+    for(index_trajectory=0;index_trajectory<150;index_trajectory++){
 
         string dir_trajectory = home_path + to_string(index_trajectory); //计算每一个轨迹目录
         
@@ -91,7 +92,7 @@ int main( int argc, char** argv ){
 
         int index_image;
         //change to index_image<=7475
-        for(index_image=0;index_image<=500;index_image += 25){
+        for(index_image=0;index_image<=7475;index_image += 25){
 
             cv::Mat rgb, depth;
 

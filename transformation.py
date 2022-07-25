@@ -32,21 +32,21 @@ def transformation(traj_index, first_frame, second_frame):
 
     line = file.readline()
     while line:
-        if(str(first_frame) in line):
-            first_lookat_x = float(line.split(' ')[1])
-            first_lookat_y = float(line.split(' ')[2])
-            first_lookat_z = float(line.split(' ')[3])
-            first_camera_x = float(line.split(' ')[4])
-            first_camera_y = float(line.split(' ')[5])
-            first_camera_z = float(line.split(' ')[6].replace('\n',''))
+        if(first_frame == int(line.split(' ')[1])):
+            first_lookat_x = float(line.split(' ')[2])
+            first_lookat_y = float(line.split(' ')[3])
+            first_lookat_z = float(line.split(' ')[4])
+            first_camera_x = float(line.split(' ')[5])
+            first_camera_y = float(line.split(' ')[6])
+            first_camera_z = float(line.split(' ')[7].replace('\n',''))
         
-        if(str(second_frame) in line):
-            second_lookat_x = float(line.split(' ')[1])
-            second_lookat_y = float(line.split(' ')[2])
-            second_lookat_z = float(line.split(' ')[3])
-            second_camera_x = float(line.split(' ')[4])
-            second_camera_y = float(line.split(' ')[5])
-            second_camera_z = float(line.split(' ')[6].replace('\n',''))
+        if(second_frame == int(line.split(' ')[1])):
+            second_lookat_x = float(line.split(' ')[2])
+            second_lookat_y = float(line.split(' ')[3])
+            second_lookat_z = float(line.split(' ')[4])
+            second_camera_x = float(line.split(' ')[5])
+            second_camera_y = float(line.split(' ')[6])
+            second_camera_z = float(line.split(' ')[7].replace('\n',''))
 
             first_pose = {
                  'lookat':np.array([first_lookat_x,first_lookat_y,first_lookat_z]),
@@ -69,5 +69,5 @@ def transformation(traj_index, first_frame, second_frame):
     file.close()
 
 
-test = transformation(223,1550,1650)
-print(test)
+# test = transformation(0,0,50)
+# print(test)
