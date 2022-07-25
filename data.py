@@ -17,7 +17,7 @@ def load_data(partition, size, interval):
     dataset = {'data': all_data,
                 'scenes': scenes}
     if partition == 'train':
-        for scene in range(1,2): 
+        for scene in range(121): 
             for image in range(300-interval): # 7475 images
                 try:
                     data = []
@@ -43,7 +43,7 @@ def load_data(partition, size, interval):
                     scenes.append(scene)
 
     if partition == 'val':
-        for scene in range(56,57): 
+        for scene in range(121,151): 
             for image in range(300-interval): # 7475 images
                 try:
                     data = []
