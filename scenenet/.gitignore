@@ -1,0 +1,5 @@
+__pycache__/*
+ground_truth/*
+val/*
+gt.txt
+scenenet_rgbd_val.pb
