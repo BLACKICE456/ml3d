@@ -41,7 +41,20 @@ We segment the objects in the images using a dataset, and we use DCP (initialize
 - Directory **scenenet/** contains all the dataset and its ground truth datas.
 ## Whole process
 1. Considering generating pcd files from the dataset, using **pcd_generator**.
+```
+cmake .
+make
+./rgbd2pcd
+```
 2. Considering generating the ground truth of the dataset using **gt.py**.
+```python
+python gt.py
+```
 3. Considering moving out all the walls and floors of the dataset, using **filtering**.
+```
+cmake .
+make
+./extract
+```
 4. Run **dcp_icp.ipynb** file for the whole training and testing process.
 5. Don't forget to modify the number of scenes and the data(with filtering or not) that you want to use in the **data.py**.
