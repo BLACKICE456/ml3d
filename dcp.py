@@ -10,9 +10,10 @@ from torch.optim.lr_scheduler import MultiStepLR
 import sys
 sys.path.append("dcp-master")
 from model import DCP
-from util import transform_point_cloud, npmat2euler, quat2mat
+from util import transform_point_cloud, quat2mat, npmat2euler
 import numpy as np
 from tqdm import tqdm
+from scipy.spatial.transform import Rotation
 
 
 class IOStream:
@@ -98,7 +99,8 @@ def train_one_epoch(args, net, train_loader, opt):
         transformed_target = transform_point_cloud(target, rotation_ba_pred, translation_ba_pred)
         ###########################
         identity = torch.eye(3).cuda().unsqueeze(0).repeat(batch_size, 1, 1)
-        loss = F.mse_loss(torch.matmul(rotation_ab_pred.transpose(2, 1), rotation_ab), identity) \
+        rotation_ab_pred_euler = npmat2euler(rotation_ab_pred.cpu().detach().numpy())
+        loss = F.mse_loss(torch.tensor(rotation_ab_pred_euler), euler_ab) \
                + F.mse_loss(translation_ab_pred, translation_ab)
         if args['cycle']:
             rotation_loss = F.mse_loss(torch.matmul(rotation_ba_pred, rotation_ab_pred), identity.clone())
@@ -144,11 +146,11 @@ def train_one_epoch(args, net, train_loader, opt):
 def train(args, net, train_loader, test_loader):
     if args['use_sgd']:
         print("Use SGD")
-        opt = optim.SGD(net.parameters(), lr=args['lr'] * 100, momentum=args.momentum, weight_decay=1e-4)
+        opt = optim.SGD(net.parameters(), lr=args['lr'] * 100, momentum=args['momentum'], weight_decay=1e-4)
     else:
         print("Use Adam")
         opt = optim.Adam(net.parameters(), lr=args['lr'], weight_decay=1e-4)
-    scheduler = MultiStepLR(opt, milestones=[75, 150, 200], gamma=0.1)
+    scheduler = MultiStepLR(opt, milestones=[25, 50, 100], gamma=0.1)
 
 
     best_test_loss = np.inf
@@ -192,7 +194,6 @@ def train(args, net, train_loader, test_loader):
 
         train_rmse_ba = np.sqrt(train_mse_ba)
         test_rmse_ba = np.sqrt(test_mse_ba)
-
         train_rotations_ab_pred_euler = npmat2euler(train_rotations_ab_pred)
         train_r_mse_ab = np.mean((train_rotations_ab_pred_euler - train_eulers_ab) ** 2)
         train_r_rmse_ab = np.sqrt(train_r_mse_ab)
@@ -325,7 +326,8 @@ def test_one_epoch(args, net, test_loader):
 
         ###########################
         identity = torch.eye(3).cuda().unsqueeze(0).repeat(batch_size, 1, 1)
-        loss = F.mse_loss(torch.matmul(rotation_ab_pred.transpose(2, 1), rotation_ab), identity) \
+        rotation_ab_pred_euler = npmat2euler(rotation_ab_pred.cpu().detach().numpy())
+        loss = F.mse_loss(torch.tensor(rotation_ab_pred_euler), euler_ab) \
                + F.mse_loss(translation_ab_pred, translation_ab)
 
         total_loss += loss.item()

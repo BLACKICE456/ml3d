@@ -12,13 +12,13 @@ import warnings
 def load_data(partition, size, interval):
     # download()
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    DATA_DIR = os.path.join(BASE_DIR, 'val/0/')
+    DATA_DIR = os.path.join(BASE_DIR, 'scenenet/val/0/')
     all_data = []
     scenes = []
     dataset = {'data': all_data,
                 'scenes': scenes}
     if partition == 'train':
-        for scene in range(121): 
+        for scene in range(1,2): 
             try:
                 all_data = []
                 scenes = []
@@ -41,7 +41,7 @@ def load_data(partition, size, interval):
                 continue
 
     if partition == 'val':
-        for scene in range(121,151): 
+        for scene in range(56,57): 
             try:
                 all_data = []
                 scenes = []
