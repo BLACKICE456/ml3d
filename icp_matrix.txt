@@ -1,0 +1,9 @@
+==FINAL TEST==
+A--------->B
+EPOCH:: -1, Loss: 0.076297, Cycle Loss: 0.000000, MSE: 0.019313, RMSE: 
+0.138971, MAE: 0.022895, rot_MSE: 25.659557, rot_RMSE: 5.065526, rot_MAE: 
+3.228639, trans_MSE: 0.072425, trans_RMSE: 0.269118, trans_MAE: 0.137634
+B--------->A
+EPOCH:: -1, Loss: 0.076297, MSE: 0.019313, RMSE: 0.138971, MAE: 0.022552, 
+rot_MSE: 25.720129, rot_RMSE: 5.071502, rot_MAE: 3.221494, trans_MSE: 
+0.072602, trans_RMSE: 0.269447, trans_MAE: 0.135471
