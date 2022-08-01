@@ -46,15 +46,20 @@ cmake .
 make
 ./rgbd2pcd
 ```
-2. Considering generating the ground truth of the dataset using **gt.py**.
+2. Considering extract the information of dataset (camera pose) using scenenet/read_protobuf
+```
+make
+python read_prtobuf.py
+```
+3. Considering generating the ground truth of the dataset using **gt.py**.
 ```python
 python gt.py
 ```
-3. Considering moving out all the walls and floors of the dataset, using **filtering**.
+4. Considering moving out all the walls and floors of the dataset, using **filtering**.
 ```
 cmake .
 make
 ./extract
 ```
-4. Run **dcp_icp.ipynb** file for the whole training and testing process.
-5. Don't forget to modify the number of scenes and the data(with filtering or not) that you want to use in the **data.py**.
+5. Run **dcp_icp.ipynb** file for the whole training and testing process.
+6. Don't forget to modify the number of scenes and the data(with filtering or not) that you want to use in the **data.py**.
