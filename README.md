@@ -49,7 +49,7 @@ make
 2. Considering extract the information of dataset (camera pose) using scenenet/read_protobuf
 ```
 make
-python read_prtobuf.py
+python read_protobuf.py
 ```
 3. Considering generating the ground truth of the dataset using **gt.py**.
 ```python
