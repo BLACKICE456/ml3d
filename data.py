@@ -9,7 +9,7 @@ from transformation import transformation
 from scipy.spatial.transform import Rotation
 import warnings
 
-def load_data(partition, size, interval):
+def load_data(partition, size, interval, filter):
     # download()
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     DATA_DIR = os.path.join(BASE_DIR, 'scenenet/val/0/')
@@ -18,14 +18,18 @@ def load_data(partition, size, interval):
     dataset = {'data': all_data,
                 'scenes': scenes}
     if partition == 'train':
-        for scene in range(1,2): 
+        for scene in range(24,25): 
             try:
                 all_data = []
                 scenes = []
                 for image in range(300-interval): # 7475 images
                     data = []
-                    data1 = o3d.io.read_point_cloud(DATA_DIR+str(scene)+'/'+str(image*25)+"_after_filtering.pcd")
-                    data2 = o3d.io.read_point_cloud(DATA_DIR+str(scene)+'/'+str((image+interval)*25)+"_after_filtering.pcd")
+                    if filter:
+                        data1 = o3d.io.read_point_cloud(DATA_DIR+str(scene)+'/'+str(image*25)+"_after_filtering.pcd")
+                        data2 = o3d.io.read_point_cloud(DATA_DIR+str(scene)+'/'+str((image+interval)*25)+"_after_filtering.pcd")
+                    else:
+                        data1 = o3d.io.read_point_cloud(DATA_DIR+str(scene)+'/'+str(image*25)+".pcd")
+                        data2 = o3d.io.read_point_cloud(DATA_DIR+str(scene)+'/'+str((image+interval)*25)+".pcd")
                     index1 = np.random.randint(len(data1.points), size=size)
                     index2 = np.random.randint(len(data2.points), size=size)
                     data1 = np.array(data1.points)[index1]
@@ -41,14 +45,18 @@ def load_data(partition, size, interval):
                 continue
 
     if partition == 'val':
-        for scene in range(56,57): 
+        for scene in range(24,25): 
             try:
                 all_data = []
                 scenes = []
                 for image in range(300-interval): # 7475 images
                     data = []
-                    data1 = o3d.io.read_point_cloud(DATA_DIR+str(scene)+'/'+str(image*25)+"_after_filtering.pcd")
-                    data2 = o3d.io.read_point_cloud(DATA_DIR+str(scene)+'/'+str((image+interval)*25)+"_after_filtering.pcd")
+                    if filter:
+                        data1 = o3d.io.read_point_cloud(DATA_DIR+str(scene)+'/'+str(image*25)+"_after_filtering.pcd")
+                        data2 = o3d.io.read_point_cloud(DATA_DIR+str(scene)+'/'+str((image+interval)*25)+"_after_filtering.pcd")
+                    else:
+                        data1 = o3d.io.read_point_cloud(DATA_DIR+str(scene)+'/'+str(image*25)+".pcd")
+                        data2 = o3d.io.read_point_cloud(DATA_DIR+str(scene)+'/'+str((image+interval)*25)+".pcd")
                     index1 = np.random.randint(len(data1.points), size=size)
                     index2 = np.random.randint(len(data2.points), size=size)
                     data1 = np.array(data1.points)[index1]
@@ -71,8 +79,8 @@ def load_data(partition, size, interval):
 
 
 class SceneNet(Dataset):
-    def __init__(self, size, partition, icp=False, interval=1, r=None, t=None):
-        self.data = load_data(partition, size, interval)
+    def __init__(self, size, partition, icp=False, interval=1, r=None, t=None, filter=True):
+        self.data = load_data(partition, size, interval, filter)
         self.interval = interval
         self.icp = icp
         self.r = r
@@ -81,11 +89,12 @@ class SceneNet(Dataset):
     def __getitem__(self, index):
         if self.icp:
             points1 = self.data['data'][index][0]
-            points2 = transform(points1, self.r[index], self.t[index])
+            points1 = transform(points1, self.r[index], self.t[index])
+            points2 = self.data['data'][index][1]
         else:
             points1 = self.data['data'][index][0]
             points2 = self.data['data'][index][1]
-        T = transformation(self.data['scenes'][index], (index%299)*25, (index%299)*25+self.interval*25)
+        T = transformation(self.data['scenes'][index], (index%(300-self.interval))*25, (index%(300-self.interval))*25+self.interval*25)
         R_ab = T[:3,:3]
         R_ba = R_ab.T
         translation_ab = T[:3,3]

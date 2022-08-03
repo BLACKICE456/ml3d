@@ -99,8 +99,7 @@ def train_one_epoch(args, net, train_loader, opt):
         transformed_target = transform_point_cloud(target, rotation_ba_pred, translation_ba_pred)
         ###########################
         identity = torch.eye(3).cuda().unsqueeze(0).repeat(batch_size, 1, 1)
-        rotation_ab_pred_euler = npmat2euler(rotation_ab_pred.cpu().detach().numpy())
-        loss = F.mse_loss(torch.tensor(rotation_ab_pred_euler), euler_ab) \
+        loss = F.mse_loss(torch.matmul(rotation_ab_pred.transpose(2, 1), rotation_ab), identity) \
                + F.mse_loss(translation_ab_pred, translation_ab)
         if args['cycle']:
             rotation_loss = F.mse_loss(torch.matmul(rotation_ba_pred, rotation_ab_pred), identity.clone())
@@ -150,32 +149,10 @@ def train(args, net, train_loader, test_loader):
     else:
         print("Use Adam")
         opt = optim.Adam(net.parameters(), lr=args['lr'], weight_decay=1e-4)
-    scheduler = MultiStepLR(opt, milestones=[25, 50, 100], gamma=0.1)
+    scheduler = MultiStepLR(opt, milestones=[50, 100, 120, 140, 160, 200], gamma=0.5)
 
 
-    best_test_loss = np.inf
-    best_test_cycle_loss = np.inf
-    best_test_mse_ab = np.inf
-    best_test_rmse_ab = np.inf
-    best_test_mae_ab = np.inf
-
-    best_test_r_mse_ab = np.inf
-    best_test_r_rmse_ab = np.inf
-    best_test_r_mae_ab = np.inf
-    best_test_t_mse_ab = np.inf
-    best_test_t_rmse_ab = np.inf
-    best_test_t_mae_ab = np.inf
-
-    best_test_mse_ba = np.inf
-    best_test_rmse_ba = np.inf
-    best_test_mae_ba = np.inf
-
-    best_test_r_mse_ba = np.inf
-    best_test_r_rmse_ba = np.inf
-    best_test_r_mae_ba = np.inf
-    best_test_t_mse_ba = np.inf
-    best_test_t_rmse_ba = np.inf
-    best_test_t_mae_ba = np.inf
+    best_train_loss = np.inf
 
     for epoch in range(args['epochs']):
         scheduler.step()
@@ -184,16 +161,9 @@ def train(args, net, train_loader, test_loader):
         train_rotations_ab_pred, \
         train_translations_ab_pred, train_rotations_ba, train_translations_ba, train_rotations_ba_pred, \
         train_translations_ba_pred, train_eulers_ab, train_eulers_ba = train_one_epoch(args, net, train_loader, opt)
-        test_loss, test_cycle_loss, \
-        test_mse_ab, test_mae_ab, test_mse_ba, test_mae_ba, test_rotations_ab, test_translations_ab, \
-        test_rotations_ab_pred, \
-        test_translations_ab_pred, test_rotations_ba, test_translations_ba, test_rotations_ba_pred, \
-        test_translations_ba_pred, test_eulers_ab, test_eulers_ba = test_one_epoch(args, net, test_loader)
         train_rmse_ab = np.sqrt(train_mse_ab)
-        test_rmse_ab = np.sqrt(test_mse_ab)
 
         train_rmse_ba = np.sqrt(train_mse_ba)
-        test_rmse_ba = np.sqrt(test_mse_ba)
         train_rotations_ab_pred_euler = npmat2euler(train_rotations_ab_pred)
         train_r_mse_ab = np.mean((train_rotations_ab_pred_euler - train_eulers_ab) ** 2)
         train_r_rmse_ab = np.sqrt(train_r_mse_ab)
@@ -210,56 +180,15 @@ def train(args, net, train_loader, test_loader):
         train_t_rmse_ba = np.sqrt(train_t_mse_ba)
         train_t_mae_ba = np.mean(np.abs(train_translations_ba - train_translations_ba_pred))
 
-        test_rotations_ab_pred_euler = npmat2euler(test_rotations_ab_pred)
-        test_r_mse_ab = np.mean((test_rotations_ab_pred_euler - test_eulers_ab) ** 2)
-        test_r_rmse_ab = np.sqrt(test_r_mse_ab)
-        test_r_mae_ab = np.mean(np.abs(test_rotations_ab_pred_euler - test_eulers_ab))
-        test_t_mse_ab = np.mean((test_translations_ab - test_translations_ab_pred) ** 2)
-        test_t_rmse_ab = np.sqrt(test_t_mse_ab)
-        test_t_mae_ab = np.mean(np.abs(test_translations_ab - test_translations_ab_pred))
-
-        test_rotations_ba_pred_euler = npmat2euler(test_rotations_ba_pred, 'xyz')
-        test_r_mse_ba = np.mean((test_rotations_ba_pred_euler - test_eulers_ba) ** 2)
-        test_r_rmse_ba = np.sqrt(test_r_mse_ba)
-        test_r_mae_ba = np.mean(np.abs(test_rotations_ba_pred_euler - test_eulers_ba))
-        test_t_mse_ba = np.mean((test_translations_ba - test_translations_ba_pred) ** 2)
-        test_t_rmse_ba = np.sqrt(test_t_mse_ba)
-        test_t_mae_ba = np.mean(np.abs(test_translations_ba - test_translations_ba_pred))
-
-        if best_test_loss >= test_loss:
-            best_test_loss = test_loss
-            best_test_cycle_loss = test_cycle_loss
-
-            best_test_mse_ab = test_mse_ab
-            best_test_rmse_ab = test_rmse_ab
-            best_test_mae_ab = test_mae_ab
-
-            best_test_r_mse_ab = test_r_mse_ab
-            best_test_r_rmse_ab = test_r_rmse_ab
-            best_test_r_mae_ab = test_r_mae_ab
-
-            best_test_t_mse_ab = test_t_mse_ab
-            best_test_t_rmse_ab = test_t_rmse_ab
-            best_test_t_mae_ab = test_t_mae_ab
-
-            best_test_mse_ba = test_mse_ba
-            best_test_rmse_ba = test_rmse_ba
-            best_test_mae_ba = test_mae_ba
-
-            best_test_r_mse_ba = test_r_mse_ba
-            best_test_r_rmse_ba = test_r_rmse_ba
-            best_test_r_mae_ba = test_r_mae_ba
-
-            best_test_t_mse_ba = test_t_mse_ba
-            best_test_t_rmse_ba = test_t_rmse_ba
-            best_test_t_mae_ba = test_t_mae_ba
+        if best_train_loss >= train_loss:
+            best_train_loss = train_loss
 
             if torch.cuda.device_count() > 1:
                 torch.save(net.module.state_dict(), 'checkpoints/%s/models/model.best.t7' % args['exp_name'])
             else:
                 torch.save(net.state_dict(), 'checkpoints/%s/models/model.best.t7' % args['exp_name'])
 
-        print('Epoch %d: -train- Loss: %f,  -val- Loss: %f' % (epoch, train_loss, test_loss))
+        print('Epoch %d: -train- Loss: %f' % (epoch, train_loss))
 
         if torch.cuda.device_count() > 1:
             torch.save(net.module.state_dict(), 'checkpoints/%s/models/model.%d.t7' % (args['exp_name'], epoch))
@@ -326,8 +255,7 @@ def test_one_epoch(args, net, test_loader):
 
         ###########################
         identity = torch.eye(3).cuda().unsqueeze(0).repeat(batch_size, 1, 1)
-        rotation_ab_pred_euler = npmat2euler(rotation_ab_pred.cpu().detach().numpy())
-        loss = F.mse_loss(torch.tensor(rotation_ab_pred_euler), euler_ab) \
+        loss = F.mse_loss(torch.matmul(rotation_ab_pred.transpose(2, 1), rotation_ab), identity) \
                + F.mse_loss(translation_ab_pred, translation_ab)
 
         total_loss += loss.item()
