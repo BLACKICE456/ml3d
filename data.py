@@ -7,7 +7,7 @@ import sys
 sys.path.append("dcp-master")
 from transformation import transformation
 from scipy.spatial.transform import Rotation
-import warnings
+from sklearn import preprocessing as pp
 
 def load_data(partition, size, interval, filter):
     # download()
@@ -94,6 +94,12 @@ class SceneNet(Dataset):
         else:
             points1 = self.data['data'][index][0]
             points2 = self.data['data'][index][1]
+        # centralize data to coordinate 0,0,0
+        points1 = centralize(points1)
+        points2 = centralize(points2)
+        # normalize data to range (-1,1)
+        points1 = normalize(points1)
+        points2 = normalize(points2)
         T = transformation(self.data['scenes'][index], (index%(300-self.interval))*25, (index%(300-self.interval))*25+self.interval*25)
         R_ab = T[:3,:3]
         R_ba = R_ab.T
@@ -120,3 +126,19 @@ def npmat2euler(mats, seq='zyx'):
 def transform(point_cloud, R=None, t=None):
     t_broadcast = np.broadcast_to(t[:, np.newaxis], (3, point_cloud.shape[0]))
     return (R @ point_cloud.T + t_broadcast).T
+
+def centralize(x):
+    mean = np.mean(x)
+    std = np.std(x)
+    x = (x - mean) / std
+    return x
+
+def normalize(data):
+  minVals = data.min(0)
+  maxVals = data.max(0)
+  ranges = maxVals - minVals
+  normData = -np.ones(np.shape(data))
+  m = data.shape[0]
+  normData = data - np.tile(minVals, (m, 1))
+  normData = normData/np.tile(ranges, (m, 1))
+  return normData
