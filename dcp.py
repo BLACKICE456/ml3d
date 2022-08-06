@@ -14,7 +14,7 @@ from util import transform_point_cloud, quat2mat, npmat2euler
 import numpy as np
 from tqdm import tqdm
 from scipy.spatial.transform import Rotation
-
+from tensorboardX import SummaryWriter
 
 class IOStream:
     def __init__(self, path):
@@ -152,8 +152,7 @@ def train(args, net, train_loader, test_loader):
     scheduler = MultiStepLR(opt, milestones=[50, 100, 120, 140, 160, 200], gamma=0.5)
 
 
-    best_train_loss = np.inf
-
+    best_test_loss = np.inf
     for epoch in range(args['epochs']):
         scheduler.step()
         train_loss, train_cycle_loss, \
@@ -161,7 +160,17 @@ def train(args, net, train_loader, test_loader):
         train_rotations_ab_pred, \
         train_translations_ab_pred, train_rotations_ba, train_translations_ba, train_rotations_ba_pred, \
         train_translations_ba_pred, train_eulers_ab, train_eulers_ba = train_one_epoch(args, net, train_loader, opt)
+        test_loss = np.inf
+        if epoch % 10 == 0:
+            test_loss, test_cycle_loss, \
+            test_mse_ab, test_mae_ab, test_mse_ba, test_mae_ba, test_rotations_ab, test_translations_ab, \
+            test_rotations_ab_pred, \
+            test_translations_ab_pred, test_rotations_ba, test_translations_ba, test_rotations_ba_pred, \
+            test_translations_ba_pred, test_eulers_ab, test_eulers_ba = test_one_epoch(args, net, test_loader)
+            print('*** test *** Loss: %f' % (test_loss))
+
         train_rmse_ab = np.sqrt(train_mse_ab)
+
 
         train_rmse_ba = np.sqrt(train_mse_ba)
         train_rotations_ab_pred_euler = npmat2euler(train_rotations_ab_pred)
@@ -180,8 +189,8 @@ def train(args, net, train_loader, test_loader):
         train_t_rmse_ba = np.sqrt(train_t_mse_ba)
         train_t_mae_ba = np.mean(np.abs(train_translations_ba - train_translations_ba_pred))
 
-        if best_train_loss >= train_loss:
-            best_train_loss = train_loss
+        if best_test_loss >= test_loss:
+            best_test_loss = test_loss
 
             if torch.cuda.device_count() > 1:
                 torch.save(net.module.state_dict(), 'checkpoints/%s/models/model.best.t7' % args['exp_name'])
