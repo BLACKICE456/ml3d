@@ -33,7 +33,6 @@ We segment the objects in the images using a dataset, and we use DCP (initialize
 ├── requirements.txt
 ├── simpleICP-master/
 ├── test.ipynb
-├── test_case/
 ├── transformation.py
 └── tree.txt
 ```
